@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+</head>
+<body>
+     <!-- c'est le div ou la navbar sera charger -->
+    <div id="monNavbar"></div> 
+
+
+     <div class="container">
+        <div class="row mt-5">
+            <div class="col-lg-5 bg-white m-auto rounded-top">
+                <h2 class="text-center text-primary">Saisir les notes de l'apprenant</h2>
+                <form id="noteForm">
+                    <input type="hidden" id="id_note">
+
+
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
+                        <select id="id_apprenant" class="form-select"></select>
+                    </div>
+
+
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fa-solid fa-folder fa-fw"></i></span>
+                        <select id="id_module" class="form-select"></select><!--type d'input qui permet un deroulant des elements-->
+                    </div>
+
+
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fa-solid fa-pen fa-fw"></i></span>
+                        <input type="number" step="0.01" min="0" max="20" class="form-control" id="note_devoir" placeholder="Note de devoir">
+                    </div>
+
+
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fa-solid fa-pen fa-fw"></i></span>
+                        <input type="number" step="0.01" min="0" max="20" class="form-control" id="note_examen" placeholder="Note de examen">
+                    </div>
+
+                    <!--ici pas besoin de remplir la moyenne le backend s'en chargera -->
+
+                     <div class="d-grid mb-4">
+                            <button type="submit" class="btn btn-success">J'enregistre</button>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+     <!--liste des inscription des apprenants-->
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-lg-8 bg-white m-auto rounded-top">
+                <h3 class="text-center  text-primary">Tableau des notes des apprenants</h3>
+                <table class="table table-bordered table-hover table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                        <th>id</th>
+                        <th>apprenant</th>
+                        <th>module</th>
+                        <th>note_devoir</th>
+                        <th>note_examen</th>
+                        <th>moyenne</th>
+                        <th>action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyNote"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/note.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+    
+</body>
+</html>

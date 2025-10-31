@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formateur</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+     <!-- c'est le div ou la navbar sera charger -->
+    <div id="monNavbar"></div> 
+
+    <!-- on ajoute un formateur-->
+     <div class="container"> <!--conteneur responsive avec des marges automatique et une largeur max qui s'adapte selon l'ecrant-->
+        <div class="row mt-5"><!--cree une ligne selon le grille de boostrapp-->
+            <div class="col-lg-4 bg-white m-auto rounded-top"><!--colonne de 4/12 sur les grand ecrands et 100% sur les petits ecrans-->
+                <h2 class="text-center text-center text-primary">Ajouter un formateur</h2>
+                <form id="formateurForm">
+                     <input type="hidden" id="id_formateur">
+
+
+                     <div class="input-group mb-3"><!--classe pour regrouper input et icone(span)-->
+                        <span class="input-group-text"><i class="fa-solid fa-user fa-fw"></i></span>
+                            <input type="text" class="form-control" id="prenom" placeholder="Prenom" required>
+                     </div>
+
+                      <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa-solid fa-user fa-fw"></i></span>
+                            <input type="text" class="form-control" id="nom" placeholder="Nom" required>
+                        </div>
+
+
+                         <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa-solid fa-book fa-fw"></i></span>
+                            <input type="text" class="form-control" id="specialite" placeholder="Specialite" required>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa-solid fa-envelope fa-fw"></i></span>
+                            <input type="email" class="form-control" id="email" placeholder="Email">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa-solid fa-lock fa-fw"></i></span>
+                            <input type="password" class="form-control" id="mot_de_passe" placeholder="Mot de pass">
+                        </div>
+
+                        <div class="d-grid mb-4">
+                            <button type="submit" class="btn btn-success">J'ajoute</button>
+                        </div>
+                </form>
+            </div>
+        </div>
+     </div>
+
+
+     <!--liste des formateurs-->
+     <div class="container">
+        <div class="row mt-4">
+            <div class="col-lg-8 bg-white m-auto rounded-top">
+                <h2 class="text-center text-primary">Liste des fomateurs</h2>
+                <table class="table table-bordered table-hover table-striped">
+                    <thead class="table-dark">
+                        <th>id</th>
+                        <th>Prenom</th>
+                        <th>Nom</th>
+                        <th>Specialite</th>
+                        <th>Email</th>
+                    </thead>
+                    <tbody id="tableFormateur"></tbody>
+                </table>
+            </div>
+        </div>
+     </div>
+
+
+
+
+
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/formateur.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+    
+</body>
+</html>

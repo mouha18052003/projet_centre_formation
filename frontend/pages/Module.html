@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modules</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+     <!-- c'est le div ou la navbar sera charger -->
+    <div id="monNavbar"></div> 
+
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-lg-4 bg-white m-auto rounded-top">
+                <h2 class="text-center text-primary">Ajouter une module</h2>
+
+                <form id="moduleForm">
+                    <input type="hidden" id="id_module">
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text"><i class="fa-solid fa-folder fa-fw"></i></span>
+                        <input type="text" class="form-control" id="nom_module" placeholder="Nom module" required>
+                    </div>
+
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text"><i class="fa-solid fa-clock fa-fw"></i></span>
+                        <input type="text" class="form-control" id="duree" placeholder="Duree" required>
+                    </div>
+
+
+                     <div class="d-grid mb-4">
+                            <button type="submit" class="btn btn-success">J'ajoute</button>
+                        </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!--liste des sessions-->
+     <div class="container">
+        <div class="row mt-5">
+            <div class="col-lg-8 bg-white m-auto rounded-top">
+                 <h3 class="text-center text-primary">Liste des modules disponibles</h3>
+                <table class="table table-bordered table-hover table-striped">
+                    <thead class="table-dark">
+                        <th>id</th>
+                        <th>nom module</th>
+                        <th>duree</th>
+                    </thead>
+                    <tbody id="tableModule"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/module.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+    
+</body>
+</html>
