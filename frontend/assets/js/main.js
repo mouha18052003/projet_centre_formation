@@ -37,5 +37,18 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
 
+    // activation du bouton de deconnexion
+    const logoutBtn = document.getElementById("logoutBtn");
+    if(logoutBtn) {
+        logoutBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            if (confirm("Voulezvous vraiment ous deconnecter ?")) {
+                localStorage.removeItem("token"),
+                localStorage.removeItem("role");
+                window.location.href = "/frontend/login.html";
+            } 
+        });
+    }
+
     });
     

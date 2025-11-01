@@ -13,8 +13,10 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email, mot_de_passe }),   
         });
+    
 
         const data = await res.json();
+        console.log(data);
     
 
         if (!res.ok) throw Error(data.message || "Erreur de connexion");
@@ -26,7 +28,7 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
             return;
         }
 
-        // Sauvegarde du token et role pour les admins
+        // Sauvegarde du token et role dans le navigateur
         console.log(" Admin détecté - Sauvegarde des données");
         localStorage.setItem("token", data.token);
         localStorage.setItem("role", data.role);

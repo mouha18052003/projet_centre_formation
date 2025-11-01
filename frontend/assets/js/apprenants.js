@@ -1,11 +1,37 @@
 //on defini l'adress de base de l'API
 const API_URL = "http://localhost:3000/apprenants";
 
+//fonction pour recuperer le tken
+function getToken() {
+    return localStorage.getItem("token");
+}
+
 //fonction pour charger les apprenants
 
 //ceci est une type de fonction qui peut etre appeller avant sa declaration
 async function chargerApprenant(){
-    const res = await fetch(API_URL);
+
+    const token = getToken();
+    if(!token) {
+        alert("veillez vous connecter!");
+        window.location.href = "/frontend/login.html";
+        return;
+    }
+
+
+    const res = await fetch(API_URL, {
+        headers: {
+            "Authorization": `Bearer ${token}`,
+        },
+    });
+
+    if(!res.ok) {
+        console.error("Erreur de chargement :", res.status);
+        alert("Erreur d'acces aux donnees, veillez vous recoonecter.");
+        window.location.href = "/frontend/login.html";
+        return;
+    }
+
     const data = await res.json();
 
     const tbody = document.getElementById("tableApprenant");
@@ -37,6 +63,8 @@ async function chargerApprenant(){
 document.getElementById("apprenantForm").addEventListener("submit", async (e)=> {
     e.preventDefault();//empeche la page de se recharger
     const id = document.getElementById("id_apprenant").value;
+    const token = getToken();
+
     const data = {
         prenom: document.getElementById("prenom").value,
         nom: document.getElementById("nom").value,
@@ -49,7 +77,10 @@ document.getElementById("apprenantForm").addEventListener("submit", async (e)=> 
 
     const option = {
         method: id ? "PUT" : "POST",
-        headers: { "Content-Type": "application/json"},
+        headers: { 
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
+            },
         body: JSON.stringify(data),//convertir les donnes data en json pour les envoyer au serveur
     };
 
@@ -62,8 +93,13 @@ document.getElementById("apprenantForm").addEventListener("submit", async (e)=> 
 
 //suprimer un apprenant
 async function supprimerApprenant(id) {
+    const token = getToken();
+
     if(confirm("veux tu supprimer?")) {
-        await fetch(`${API_URL}/${id}`, { method:"DELETE"});
+        await fetch(`${API_URL}/${id}`, {
+            method:"DELETE",
+            headers: {"Authorization": `Bearer ${token}` },
+            });
         chargerApprenant();
     }
 }
@@ -72,7 +108,12 @@ async function supprimerApprenant(id) {
 
 //modifier  un apprenant
 async function modifierApprenant(id) {
-    const res = await fetch(`${API_URL}/${id}`);
+    const token = getToken();
+
+    const res = await fetch(`${API_URL}/${id}`, {
+        headers: { "Authorization": `Bearer ${token}` },
+    });
+    
     const apprenant = await res.json();//convertir les donnes en objet javascript
 
     document.getElementById("id_apprenant").value = apprenant.id_apprenant;
@@ -88,4 +129,4 @@ async function modifierApprenant(id) {
 
 
 //charger au demararge
-chargerApprenant();
+document.addEventListener("DOMContentLoaded", chargerApprenant);
